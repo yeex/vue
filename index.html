@@ -62,7 +62,7 @@
         </modal> -->
 
         <!-- <button @click="showModal=true">Show Modal</button> -->
-        <tabs>
+        <!-- <tabs>
             <tab name="About us" :selected="true">
                 <h1>This is me!</h1>
             </tab>
@@ -78,7 +78,11 @@
             <tab name="Lifestyle">
                 <h1>Rubavu</h1>
             </tab>
-        </tabs>
+        </tabs> -->
+
+        <coupon @applied="onCouponApplied"></coupon>
+
+        <h1 v-if="couponApplied">You used this coupon!</h1>
     </div>
 
     <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>

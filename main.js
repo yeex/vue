@@ -1,113 +1,145 @@
-Vue.component('tabs', {
-    props: ['title', 'body'],
+// Vue.component('tabs', {
+//     props: ['title', 'body'],
 
-    data() {
-        return {
-            isVisible: true
-        };
-    },
-    // template: `
-    //     <article class="message" v-show="isVisible">
-    //     <div class="message-header">
-    //         {{ title }}
-    //         <button type="button" @click="hideModal">x</button>
-    //     </div>
-    //     <div class="message-body">
-    //         {{ body }}
-    //     </div>
-    //     </article>
-    // `,
+//     data() {
+//         return {
+//             isVisible: true
+//         };
+//     },
+//     template: `
+//         <article class="message" v-show="isVisible">
+//         <div class="message-header">
+//             {{ title }}
+//             <button type="button" @click="hideModal">x</button>
+//         </div>
+//         <div class="message-body">
+//             {{ body }}
+//         </div>
+//         </article>
+//     `,
 
-    // template: `
-    //     <div class="modal is-active">
-    //         <div class="modal-background">
+//     template: `
+//         <div class="modal is-active">
+//             <div class="modal-background">
             
-    //         </div>
-    //         <div class="modal-content">
-    //             <div class="box">
-    //                 <slot></slot>
-    //             </div>
-    //         </div>
-    //         <button class="modal-close" @click="$emit('close')"></button>
-    //     </div>
-    // `,
+//             </div>
+//             <div class="modal-content">
+//                 <div class="box">
+//                     <slot></slot>
+//                 </div>
+//             </div>
+//             <button class="modal-close" @click="$emit('close')"></button>
+//         </div>
+//     `,
 
-    // data() {
-    //     return {
-    //         tasks: [
-    //             {task: 'Go for a morning run', completed: true},
-    //             {task: 'Work on my side-project', completed: false},
-    //             {task: 'Have a round the world tour', completed: true}
-    //         ]
-    //     };
-    // },
+//     data() {
+//         return {
+//             tasks: [
+//                 {task: 'Go for a morning run', completed: true},
+//                 {task: 'Work on my side-project', completed: false},
+//                 {task: 'Have a round the world tour', completed: true}
+//             ]
+//         };
+//     },
 
-    template: `
-        <div>
-            <div class="tabs">
-                <ul>
-                    <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
-                        <a :href="tab.href" @click="selectTab(tab)">{{ tab.name }}</a>
-                    </li>
-                </ul>
-            </div>
+//     template: `
+//         <div>
+//             <div class="tabs">
+//                 <ul>
+//                     <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
+//                         <a :href="tab.href" @click="selectTab(tab)">{{ tab.name }}</a>
+//                     </li>
+//                 </ul>
+//             </div>
 
-            <div class="tabs-details">
-                <slot></slot>
-            </div>
-        </div>
-    `,
+//             <div class="tabs-details">
+//                 <slot></slot>
+//             </div>
+//         </div>
+//     `,
 
-    data() {
-        return { tabs: [] };
-    },
+//     data() {
+//         return { tabs: [] };
+//     },
 
-    created() {
-        this.tabs = this.$children;
-    },
+//     created() {
+//         this.tabs = this.$children;
+//     },
 
-    // mounted() {
-    //     console.log(this.$children);
-    // },
+//     mounted() {
+//         console.log(this.$children);
+//     },
 
-    methods: {
-        // hideModal() {
-        //     this.isVisible = false;
-        // }
+//     methods: {
+//         hideModal() {
+//             this.isVisible = false;
+//         },
 
-        selectTab(selectedTab) {
-            this.tabs.forEach(tab => {
-                tab.isActive = (tab.name == selectedTab.name);
-            });
-        }
-    }
-});
+//         selectTab(selectedTab) {
+//             this.tabs.forEach(tab => {
+//                 tab.isActive = (tab.name == selectedTab.name);
+//             });
+//         }
+//     }
+// });
 
 // Vue.component('task', {
 //     template: '<li><slot></slot></li>'
 // });
 
-Vue.component('tab', {
-    template: `
-        <div v-show="isActive">
-            <slot></slot>
-        </div>
-    `,
+// Vue.component('tab', {
+//     template: `
+//         <div v-show="isActive">
+//             <slot></slot>
+//         </div>
+//     `,
 
-    props: {
-        name: { required: true},
-        selected: { default: false}
-    },
+//     props: {
+//         name: { required: true},
+//         selected: { default: false}
+//     },
 
-    data() {
-        return {
-            isActive: false
-        }
-    },
+//     data() {
+//         return {
+//             isActive: false
+//         }
+//     },
 
-    computed: {
-        href() {
-            return '#' + this.name.toLowerCase().replace(/ /g, '-')
+//     computed: {
+//         href() {
+//             return '#' + this.name.toLowerCase().replace(/ /g, '-')
+//         }
+//     }
+// });
+
+// new Vue({
+//     el: '#admin',
+
+//     data: {
+//         showModal: false
+//     }
+// });
+
+window.Event = new class {
+    constructor() {
+        this.vue = new Vue();
+    }
+
+    fire(event, data = null) {
+        this.vue.$emit(event, data);
+    }
+
+    listen(event, callback) {
+        this.vue.$on(event, callback);
+    }
+}
+
+Vue.component('coupon', {
+    template: '<input placeholder="Enter your coupon code" @blur="onCouponApplied">',
+
+    methods: {
+        onCouponApplied() {
+            Event.fire('applied');
         }
     }
 });
@@ -116,6 +148,9 @@ new Vue({
     el: '#admin',
 
     data: {
-        showModal: false
+        couponApplied: false
+    },
+    created() {
+        Event.listen('applied', () => alert('Handling it!'));
     }
 });

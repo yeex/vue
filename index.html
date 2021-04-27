@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning VueJS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax//libs/bulma/0.2.3/css/bulma.css">
+    <style>
+        body {
+            padding-top: 40px;
+        }
+
+        .color-red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="root">
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
+        <h2>All tasks</h2>
+        <ul>
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ul>
+
+        <h2>Completed task</h2>
+        <ul>
+            <li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
+        </ul>
+
+        <h2>Incomplete tasks</h2>
+        <ul>
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+        </ul>
+
+        <input id="input" type="text" v-model="newName">
+        <button @click="addName">Add name</button>
+        <button :title="title">Hover</button>
+        <h1 :class="className">Color</h1>
+        <h1>{{ reversedMessage }}</h1>
+    </div> -->
+
+    <!-- <div id="sudo">
+        <task-list>
+
+        </task-list>
+    </div> -->
+
+    <div id="admin" class="container">
+        <!-- <message title="Hello World" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem."></message>  -->
+        <!-- <modal v-if="showModal" @close="showModal = false">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                eu fugiat nulla pariatur.
+            </p>
+        </modal> -->
+
+        <!-- <button @click="showModal=true">Show Modal</button> -->
+        <tabs>
+            <tab name="About us" :selected="true">
+                <h1>This is me!</h1>
+            </tab>
+
+            <tab name="Contact">
+                <h1>hey@me.com</h1>
+            </tab>
+
+            <tab name="Culture">
+                <h1>Rwanda</h1>
+            </tab>
+
+            <tab name="Lifestyle">
+                <h1>Rubavu</h1>
+            </tab>
+        </tabs>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // var app = new Vue({
+        //     el: '#root',
+        //     data: {
+        //         title: 'Description',
+        //         newName: '',
+        //         names: ['John', 'Jane', 'Jack'],
+        //         className: 'color-red',
+        //         message: 'Wassup',
+        //         tasks: [
+        //             {description: 'Climb to the Himalayas', completed: true},
+        //             {description: 'Walk the dog', completed: false},
+        //             {description: 'Do house chores', completed: true},
+        //             {description: 'Buy groceries', completed: true},
+        //             {description: 'Watch Netflix', completed: true},
+        //             {description: 'Pick the kids from school', completed: false},
+        //             {description: 'Read the newspaper', completed: true},
+        //         ]
+        //     },
+
+        //     mounted() {
+        //         alert('ready');
+        //     },
+
+        //     computed: {
+        //         reversedMessage() {
+        //             return this.message.split('').reverse().join('');
+        //         },
+        //         incompleteTasks() {
+        //             return this.tasks.filter(task => !task.completed);
+        //         }
+        //     },
+
+        //     methods: {
+        //         addName() {
+        //             this.names.push(this.newName);
+        //             this.newName = '';
+        //         }
+        //     },
+
+
+        //     mounted() {
+        //         document.querySelector('#button').addEventListener('click', () => {
+                
+        //             let name = document.querySelector('#input');
+
+        //             app.names.push(name.value);
+        //             name.value = '';
+        //         });
+        //     }
+        // });
+
+
+    </script>
+</body>
+</html>

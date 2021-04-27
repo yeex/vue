@@ -84,7 +84,7 @@
 
         <h1 v-if="couponApplied">You used this coupon!</h1> -->
 
-        <modal>
+        <!-- <modal>
             <template slot="header">Title</template>
 
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint officiis, laudantium 
@@ -96,7 +96,14 @@
                 <a class="button is-warning">Cancel</a>
             </div>
             
-        </modal>
+        </modal> -->
+
+        <progress-view inline-template>
+            <div>
+                <h1>Your progress through this course is {{ completionRate }}</h1>
+                <p><button @click="completionRate += 10">Update completion</button></p>
+            </div>
+        </progress-view>
     </div>
 
     <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>

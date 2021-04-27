@@ -80,9 +80,23 @@
             </tab>
         </tabs> -->
 
-        <coupon @applied="onCouponApplied"></coupon>
+        <!-- <coupon @applied="onCouponApplied"></coupon>
 
-        <h1 v-if="couponApplied">You used this coupon!</h1>
+        <h1 v-if="couponApplied">You used this coupon!</h1> -->
+
+        <modal>
+            <template slot="header">Title</template>
+
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint officiis, laudantium 
+            voluptatem omnis quae nisi nihil quasi minus possimus suscipit porro totam veniam 
+            tenetur accusamus inventore aut, molestias fugiat eligendi!
+
+            <div slot="footer">
+                <a class="button is-success">Save changes</a>
+                <a class="button is-warning">Cancel</a>
+            </div>
+            
+        </modal>
     </div>
 
     <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>

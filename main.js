@@ -120,37 +120,63 @@
 //     }
 // });
 
-window.Event = new class {
-    constructor() {
-        this.vue = new Vue();
-    }
+// window.Event = new class {
+//     constructor() {
+//         this.vue = new Vue();
+//     }
 
-    fire(event, data = null) {
-        this.vue.$emit(event, data);
-    }
+//     fire(event, data = null) {
+//         this.vue.$emit(event, data);
+//     }
 
-    listen(event, callback) {
-        this.vue.$on(event, callback);
-    }
-}
+//     listen(event, callback) {
+//         this.vue.$on(event, callback);
+//     }
+// }
 
-Vue.component('coupon', {
-    template: '<input placeholder="Enter your coupon code" @blur="onCouponApplied">',
+// Vue.component('coupon', {
+//     template: '<input placeholder="Enter your coupon code" @blur="onCouponApplied">',
 
-    methods: {
-        onCouponApplied() {
-            Event.fire('applied');
-        }
-    }
-});
+//     methods: {
+//         onCouponApplied() {
+//             Event.fire('applied');
+//         }
+//     }
+// });
+
+// new Vue({
+//     el: '#admin',
+
+//     data: {
+//         couponApplied: false
+//     },
+//     created() {
+//         Event.listen('applied', () => alert('Handling it!'));
+//     }
+// });
+
+Vue.component('modal', {
+    template: `
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+            <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">
+                    <slot name="header"></slot>
+                </p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <slot></slot>
+            </section>
+            <footer class="modal-card-foot">
+                <slot name="footer"></slot>
+            </footer>
+        </div>
+    </div>
+    `
+})
 
 new Vue({
-    el: '#admin',
-
-    data: {
-        couponApplied: false
-    },
-    created() {
-        Event.listen('applied', () => alert('Handling it!'));
-    }
+    el: '#admin'
 });
